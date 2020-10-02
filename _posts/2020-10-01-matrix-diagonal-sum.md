@@ -30,9 +30,20 @@ mat = [
 
 ```python
 def diagonal_sum(mat):
+  sum = 0
+  middle = len(mat) // 2
+  hasmiddle = True if len(mat) % 2 != 0 else False
 
-  return
+  for row in range(len(mat)):
+    # In left diag, row = column indices in NxN matrix
+    sum += mat[row][row]
+    #right diag, column indices are different
+    col = len(mat) - 1 - row
+    if not hasmiddle or (hasmiddle and (row != middle) and (col != middle)):
+      sum += mat[row][col]
 
+
+  return sum
 # Tests
 assert diagonal_sum([[1,2,3],[4,5,6],[7,8,9]]) == 25
 ```
